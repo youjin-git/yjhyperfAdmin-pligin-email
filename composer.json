@@ -1,0 +1,17 @@
+{
+    "name": "yj-hyperf-admin-pligin/email",
+    "autoload": {
+        "psr-4": {
+            "yjHyperfAdminPligin\\Email\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "zhouwenchang",
+            "email": "1324028467@qq.com"
+        }
+    ],
+    "require": {
+        "phpmailer/phpmailer": "6.*"
+    }
+}
