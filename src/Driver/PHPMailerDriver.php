@@ -49,7 +49,7 @@ class PHPMailerDriver
     }
 
     public function setBody($body){
-        $this->PHPMailer->body = $body;
+        $this->PHPMailer->Body = $body;
         return $this;
     }
 
@@ -61,6 +61,7 @@ class PHPMailerDriver
     public function send()
     {
         $PHPMailer = $this->PHPMailer;
+        $PHPMailer->addReplyTo("1324028467@qq.com");
         $this->setHtml();
         return $PHPMailer->send();
     }

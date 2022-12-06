@@ -32,7 +32,7 @@ class EmailManager
 
     public function __call(string $name, array $arguments)
     {
-        $this->getDriver()->{$name}(...$arguments);
+        $this->driver->{$name}(...$arguments);
         return $this->driver;
     }
 }

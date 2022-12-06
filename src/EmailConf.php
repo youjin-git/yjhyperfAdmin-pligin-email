@@ -44,7 +44,6 @@ class EmailConf
         $PHPMailer->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
         $PHPMailer->Port = $this->getPort(); //SMTP
         $PHPMailer->setFrom($this->getUsername(), $this->getName());
-
     }
 
     protected function initConfig($name = 'default'){
