@@ -17,6 +17,13 @@ return [
             'password'=>"",
             'port'=>"465",
             'name'=>"your name",
+        ],
+        [
+            'host'=>"smtp.qq.com",
+            'username'=>"",
+            'password'=>"",
+            'port'=>"465",
+            'name'=>"your name",
         ]
     ],
 ];

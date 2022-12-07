@@ -48,6 +48,7 @@ class EmailConf
 
     protected function initConfig($name = 'default'){
         $config = $this->config->get("email.{$name}");
+
         //随机取一个配置
         if(count($config) != count($config, 1)){
             $config = $config[array_rand($config)];
