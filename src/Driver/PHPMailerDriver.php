@@ -45,6 +45,16 @@ class PHPMailerDriver implements MailerInterface
         $this->status = $status;
     }
 
+    public function getEmail(): array
+    {
+        return  $this->PHPMailer->getToAddresses();
+    }
+
+    public function getErrorMessage():string
+    {
+        return $this->PHPMailer->ErrorInfo;
+    }
+
     protected function setHost(){
         $this->PHPMailer->Host = $this->emailConf->getHost();
     }

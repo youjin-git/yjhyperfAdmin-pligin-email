@@ -34,7 +34,7 @@ class SendMessageResult
         return $this->mailer->getErrorMessage();
     }
 
-    public function getEmail():string
+    public function getEmail():Array
     {
         return $this->mailer->getEmail();
     }
