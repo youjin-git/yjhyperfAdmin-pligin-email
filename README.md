@@ -7,3 +7,21 @@ examples:
         ->setBody('testbody')
         ->send();
 ```
+
+```php
+   app(\yjHyperfAdminPligin\Email\Email::class)
+        ->name('default')
+        ->setSubject('setSubject')
+        ->setAddress("1324028467@qq.com")
+        ->setBody('testbody')
+        ->send();
+```
+```php
+   $emailer = app(\yjHyperfAdminPligin\Email\Email::class)
+        ->name('default')
+        ->setSubject('setSubject')
+        ->setAddress("1324028467@qq.com")
+        ->setBody('testbody')
+        ->send();
+    $emailer->getEmail();
+```
