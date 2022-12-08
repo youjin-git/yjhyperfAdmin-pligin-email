@@ -6,43 +6,67 @@
 
 namespace yjHyperfAdminPligin\Email;
 
+use Hyperf\Contract\ConfigInterface;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use yjHyperfAdminPligin\Email\Contracts\SendMessageResult;
 use yjHyperfAdminPligin\Email\EmailConf;
 use yjHyperfAdminPligin\Email\Driver\PHPMailerDriver;
+use yjHyperfAdminPligin\Email\Interfaces\MailerInterface;
 
 class EmailManager
 {
+    private $name = 'default';
+
     protected array $data = [];
 
-    protected $driver = null;
+    protected MailerInterface|null $driver = null;
+
     private EventDispatcherInterface $dispatcher;
+    private \yjHyperfAdminPligin\Email\EmailConf $emailConf;
 
-    public function __construct(EventDispatcherInterface $dispatcher)
+    public function __construct(EventDispatcherInterface $dispatcher,EmailConf $emailConf)
     {
-        $this->driver = $this->getDriver();
         $this->dispatcher = $dispatcher;
+        $this->emailConf = $emailConf;
     }
 
-    private function getDriver(): PHPMailerDriver
+    /**
+     * @return string
+     */
+    public function getName(): string
     {
-        $driverClass = PHPMailerDriver::class;
-        $driver = make($driverClass);
-        return $driver;
+        return $this->name;
     }
 
-    public function getNewDriver(){
-         return (new self(make(EventDispatcherInterface::class)));
+    /**
+     * @param string $name
+     */
+    public function setName(string $name): self
+    {
+        $this->name = $name;
+        return $this;
     }
+
+    public function driver(): self
+    {
+        $this->driver = $this->emailConf->getDriver($this->getName());
+        return $this;
+    }
+
+//    public function getNewDriver(){
+//         return (new self(app(EventDispatcherInterface::class)));
+//    }
 
     public function __call(string $name, array $arguments)
     {
+        dump($name, $arguments);
         $this->driver->{$name}(...$arguments);
         return $this->driver;
     }
 
     public function send():SendMessageResult
     {
+        dump($this->driver);
          $result =  new SendMessageResult($this->driver->send(),$this->dispatcher,$this->getData());
          return $result->startEvent();
     }

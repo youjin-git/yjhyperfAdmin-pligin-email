@@ -17,4 +17,6 @@ interface MailerInterface
     public function getErrorMessage():string;
 
     public function getEmail():array;
+
+    public function getMailer();
 }

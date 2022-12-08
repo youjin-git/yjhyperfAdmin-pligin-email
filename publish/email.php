@@ -12,6 +12,7 @@ declare(strict_types=1);
 return [
     'default' => [
         [
+            'driver'=> \yjHyperfAdminPligin\Email\Driver\PHPMailerDriver::class,
             'host'=>"smtp.qq.com",
             'username'=>"",
             'password'=>"",
@@ -19,6 +20,7 @@ return [
             'name'=>"your name",
         ],
         [
+            'driver'=> \yjHyperfAdminPligin\Email\Driver\PHPMailerDriver::class,
             'host'=>"smtp.qq.com",
             'username'=>"",
             'password'=>"",

@@ -24,9 +24,14 @@ class PHPMailerDriver implements MailerInterface
     private PHPMailer $PHPMailer;
     private EmailConf $emailConf;
 
-    public function __construct(EmailConf $emailConf)
+    public function __construct()
     {
-        $this->PHPMailer = $this->getPHPMailer($emailConf);
+        $this->PHPMailer = $this->getPHPMailer();
+    }
+
+    public function getMailer()
+    {
+        return $this->PHPMailer;
     }
 
     /**
@@ -59,11 +64,10 @@ class PHPMailerDriver implements MailerInterface
         $this->PHPMailer->Host = $this->emailConf->getHost();
     }
 
-    private function getPHPMailer($emailConf)
+    private function getPHPMailer()
     {
         /** @var PHPMailer $PHPMailer */
         $PHPMailer = make(PHPMailer::class, ['exceptions' => true]);
-        $emailConf->setConfig($PHPMailer);
         return $PHPMailer;
     }
 
