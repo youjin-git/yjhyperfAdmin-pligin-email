@@ -9,8 +9,6 @@ namespace yjHyperfAdminPligin\Email;
 use Hyperf\Contract\ConfigInterface;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use yjHyperfAdminPligin\Email\Contracts\SendMessageResult;
-use yjHyperfAdminPligin\Email\EmailConf;
-use yjHyperfAdminPligin\Email\Driver\PHPMailerDriver;
 use yjHyperfAdminPligin\Email\Interfaces\MailerInterface;
 
 class EmailManager
@@ -19,10 +17,10 @@ class EmailManager
 
     protected array $data = [];
 
-    protected MailerInterface|null $driver = null;
+    protected ?MailerInterface $driver = null;
 
     protected EventDispatcherInterface $dispatcher;
-    protected \yjHyperfAdminPligin\Email\EmailConf $emailConf;
+    protected EmailConf $emailConf;
 
     public function __construct(EventDispatcherInterface $dispatcher,EmailConf $emailConf)
     {
