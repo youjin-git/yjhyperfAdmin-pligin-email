@@ -66,7 +66,6 @@ class EmailManager
 
     public function send():SendMessageResult
     {
-        dump($this->driver);
          $result =  new SendMessageResult($this->driver->send(),$this->dispatcher,$this->getData());
          return $result->startEvent();
     }
