@@ -15,14 +15,14 @@ use yjHyperfAdminPligin\Email\Interfaces\MailerInterface;
 
 class EmailManager
 {
-    private $name = 'default';
+    protected $name = 'default';
 
     protected array $data = [];
 
     protected MailerInterface|null $driver = null;
 
-    private EventDispatcherInterface $dispatcher;
-    private \yjHyperfAdminPligin\Email\EmailConf $emailConf;
+    protected EventDispatcherInterface $dispatcher;
+    protected \yjHyperfAdminPligin\Email\EmailConf $emailConf;
 
     public function __construct(EventDispatcherInterface $dispatcher,EmailConf $emailConf)
     {
@@ -59,7 +59,6 @@ class EmailManager
 
     public function __call(string $name, array $arguments)
     {
-        dump($name, $arguments);
         $this->driver->{$name}(...$arguments);
         return $this->driver;
     }
