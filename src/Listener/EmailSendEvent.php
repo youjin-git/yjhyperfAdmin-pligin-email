@@ -1,6 +1,6 @@
 <?php
 
-namespace yjHyperfAdminPligin\Email\Contracts;
+namespace yjHyperfAdminPligin\Email\Listener;
 
 class EmailSendEvent
 {
